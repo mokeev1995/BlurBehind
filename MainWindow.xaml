@@ -1,8 +1,8 @@
 ﻿<Window x:Class="BlurBehindDemo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Hello Blur!" Height="500" Width="500"
-		Background="#12000000"
+        Title="Hello Blur!" Height="800" Width="800"
+		Background="#A8000000"
 		AllowsTransparency="True"
 		WindowStyle="None"
 		BorderThickness="3"
@@ -10,8 +10,10 @@
 		WindowStartupLocation="CenterScreen"
 		Loaded="Window_Loaded">
     <Grid>
-		<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Foreground="White">
+		<Grid Background="SlateGray" Width="500" Height="500">
+			<TextBlock x:Name="Block" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Foreground="White">
 			Hello Blur!
-		</TextBlock>
+			</TextBlock>
+		</Grid>
     </Grid>
 </Window>
