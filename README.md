@@ -1,4 +1,4 @@
-# Sample Win10 Aeroglass
+# Sample Win Vista/7/10 Aeroglass
 
 ### Some links:
 
