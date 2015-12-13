@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Security;
+// ReSharper disable FieldCanBeMadeReadOnly.Global
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedMember.Global
 
 namespace BlurLibrary
 {

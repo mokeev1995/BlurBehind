@@ -3,34 +3,45 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
+using Microsoft.Win32;
 
 namespace BlurLibrary
 {
 	public static class BlurWindow
 	{
+		public static bool Enabled { get; private set; } = false;
+
 		public static void SetBlurWindow(Window window)
 		{
 			if(Environment.OSVersion.Version.Major != 6 && Environment.OSVersion.Version.Major != 10)
 				return;
+
+			var regKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+			var product = regKey?.GetValue("ProductName") as string;
+			var windows10 = product != null && product.StartsWith("Windows 10");
 
 			if (Environment.OSVersion.Version.Major == 6 &&
 			    (Environment.OSVersion.Version.Minor == 0 || Environment.OSVersion.Version.Minor == 1))
 			{
 				SetWinVistaAndWin7Blur(window);
 			}
-			else if (Environment.OSVersion.Version.Major == 6 &&
+			else if (!windows10 && Environment.OSVersion.Version.Major == 6 &&
 			         (Environment.OSVersion.Version.Minor == 2 || Environment.OSVersion.Version.Minor == 3))
 			{
 				//nothing for win8 - win8.1
 				//SetWin8Blur(windowHelper);
 				window.Background = new SolidColorBrush(Color.FromArgb(210,0,0,0));
 			}
-			else if (Environment.OSVersion.Version.Major == 10)
+			else
 			{
-				var windowHelper = new WindowInteropHelper(window);
-				SetWin10Blur(windowHelper);
+
+				if (Environment.OSVersion.Version.Major == 10 || windows10)
+				{
+					var windowHelper = new WindowInteropHelper(window);
+					SetWin10Blur(windowHelper);
+				}
 			}
-        }
+		}
 
 		private static void SetWin10Blur(WindowInteropHelper windowHelper)
 		{
@@ -68,6 +79,7 @@ namespace BlurLibrary
 				hs.AddHook(window.WndProc);
 			}
 			InitializeGlass(hwnd);
+			Enabled = true;
 		}
 
 		private static IntPtr WndProc(this Window window, IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)

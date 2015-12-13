@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using BlurLibrary;
+using Microsoft.Win32;
 
 namespace BlurBehindDemo
 {
@@ -35,6 +36,17 @@ namespace BlurBehindDemo
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			BlurWindow.SetBlurWindow(this);
+			var regKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+			var product = regKey?.GetValue("ProductName");
+			Text.Content = $"Windows Version: v{Environment.OSVersion.Version.Major}.{Environment.OSVersion.Version.Minor}, PRODUCT: {product}";
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			BlurWindow.SetBlurWindow(this);
+			var regKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+			var product = regKey?.GetValue("ProductName");
+			Text.Content = $"Windows Version: v{Environment.OSVersion.Version.Major}.{Environment.OSVersion.Version.Minor}, PRODUCT: {product}";
 		}
 	}
 
