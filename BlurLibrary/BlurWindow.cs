@@ -23,6 +23,7 @@ namespace BlurLibrary
 			{
 				//nothing for win8 - win8.1
 				//SetWin8Blur(windowHelper);
+				window.Background = new SolidColorBrush(Color.FromArgb(210,0,0,0));
 			}
 			else if (Environment.OSVersion.Version.Major == 10)
 			{

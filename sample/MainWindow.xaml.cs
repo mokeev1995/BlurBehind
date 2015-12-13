@@ -34,17 +34,7 @@ namespace BlurBehindDemo
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			EnableBlur();
-		}
-
-		private void EnableBlur()
-		{
 			BlurWindow.SetBlurWindow(this);
-		}
-
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			EnableBlur();
 		}
 	}
 
