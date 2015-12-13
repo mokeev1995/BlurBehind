@@ -16,16 +16,12 @@ namespace BlurLibrary
 			if(Environment.OSVersion.Version.Major != 6 && Environment.OSVersion.Version.Major != 10)
 				return;
 
-			var regKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
-			var product = regKey?.GetValue("ProductName") as string;
-			var windows10 = product != null && product.StartsWith("Windows 10");
-
 			if (Environment.OSVersion.Version.Major == 6 &&
 			    (Environment.OSVersion.Version.Minor == 0 || Environment.OSVersion.Version.Minor == 1))
 			{
 				SetWinVistaAndWin7Blur(window);
 			}
-			else if (!windows10 && Environment.OSVersion.Version.Major == 6 &&
+			else if (Environment.OSVersion.Version.Major == 6 &&
 			         (Environment.OSVersion.Version.Minor == 2 || Environment.OSVersion.Version.Minor == 3))
 			{
 				//nothing for win8 - win8.1
@@ -35,7 +31,7 @@ namespace BlurLibrary
 			else
 			{
 
-				if (Environment.OSVersion.Version.Major == 10 || windows10)
+				if (Environment.OSVersion.Version.Major == 10)
 				{
 					var windowHelper = new WindowInteropHelper(window);
 					SetWin10Blur(windowHelper);
