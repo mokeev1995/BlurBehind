@@ -14,12 +14,12 @@ namespace BlurLibrary
 				return;
 
 			if (Environment.OSVersion.Version.Major == 6 &&
-			    (Environment.OSVersion.Version.Minor == 1 || Environment.OSVersion.Version.Minor == 0))
+			    (Environment.OSVersion.Version.Minor == 0 || Environment.OSVersion.Version.Minor == 1))
 			{
 				SetWinVistaAndWin7Blur(window);
 			}
 			else if (Environment.OSVersion.Version.Major == 6 &&
-			         (Environment.OSVersion.Version.Minor == 3 || Environment.OSVersion.Version.Minor == 2))
+			         (Environment.OSVersion.Version.Minor == 2 || Environment.OSVersion.Version.Minor == 3))
 			{
 				//nothing for win8 - win8.1
 				//SetWin8Blur(windowHelper);
