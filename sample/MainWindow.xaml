@@ -14,8 +14,6 @@
 			<TextBlock x:Name="Block" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Foreground="White">
 			Hello Blur!
 			</TextBlock>
-			<Button Height="50" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Enable" Click="Button_Click"/>
-			<Label Height="50" Width="300" VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="Text" Foreground="White" Content="Version: v6.0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
 		</Grid>
 	</Grid>
 </Window>
