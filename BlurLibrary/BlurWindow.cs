@@ -3,45 +3,89 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
-using Microsoft.Win32;
 
 namespace BlurLibrary
 {
+	internal enum OsType
+	{
+		WindowsVista,
+		Windows7,
+		Windows8,
+		Windows81,
+		Windows10,
+		Other
+	}
+
+	internal static class OsHelper
+	{
+		public static OsType GetOsType()
+		{
+			if (Environment.OSVersion.Version.Major != 6 && Environment.OSVersion.Version.Major != 10)
+				return OsType.Other;
+
+			if (Environment.OSVersion.Version.Major != 6)
+				return Environment.OSVersion.Version.Major == 10
+					? OsType.Windows10
+					: OsType.Other;
+
+			switch (Environment.OSVersion.Version.Minor)
+			{
+				case 0:
+					return OsType.WindowsVista;
+				case 1:
+					return OsType.Windows7;
+				case 2:
+					return OsType.Windows8;
+				case 3:
+					return OsType.Windows81;
+				default:
+					return OsType.Other;
+			}
+		}
+	}
+
 	public static class BlurWindow
 	{
-		public static bool Enabled { get; private set; } = false;
+		public static bool Enabled { get; private set; }
+
+		public static bool CanBeEnabled
+		{
+			get
+			{
+				var os = OsHelper.GetOsType();
+				return os == OsType.WindowsVista || os == OsType.Windows7 || os == OsType.Windows10;
+			}
+		}
 
 		public static void SetBlurWindow(Window window)
 		{
-			if(Environment.OSVersion.Version.Major != 6 && Environment.OSVersion.Version.Major != 10)
+			var os = OsHelper.GetOsType();
+			if(!CanBeEnabled)
 				return;
-
-			if (Environment.OSVersion.Version.Major == 6 &&
-			    (Environment.OSVersion.Version.Minor == 0 || Environment.OSVersion.Version.Minor == 1))
+			
+			switch (os)
 			{
-				SetWinVistaAndWin7Blur(window);
-			}
-			else if (Environment.OSVersion.Version.Major == 6 &&
-			         (Environment.OSVersion.Version.Minor == 2 || Environment.OSVersion.Version.Minor == 3))
-			{
-				//nothing for win8 - win8.1
-				//SetWin8Blur(windowHelper);
-				window.Background = new SolidColorBrush(Color.FromArgb(210,0,0,0));
-			}
-			else
-			{
-
-				if (Environment.OSVersion.Version.Major == 10)
-				{
+				case OsType.WindowsVista:
+				case OsType.Windows7:
+					SetWinVistaAndWin7Blur(window);
+					break;
+				case OsType.Windows10:
 					var windowHelper = new WindowInteropHelper(window);
 					SetWin10Blur(windowHelper);
-				}
+					break;
+
+				case OsType.Windows8:
+				case OsType.Windows81:
+				case OsType.Other:
+					return;
+				default:
+					return;
 			}
 		}
 
 		private static void SetWin10Blur(WindowInteropHelper windowHelper)
 		{
-			var accent = new AccentPolicy { AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND };
+			var accent = new AccentPolicy {AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND};
 
 			var accentStructSize = Marshal.SizeOf(accent);
 
@@ -91,7 +135,7 @@ namespace BlurLibrary
 		private static void InitializeGlass(IntPtr hwnd)
 		{
 			// fill the background with glass
-			var margins = new NativeMethods.MARGINS(); 
+			var margins = new NativeMethods.MARGINS();
 			margins.cxLeftWidth = margins.cxRightWidth = margins.cyBottomHeight = margins.cyTopHeight = -1;
 			NativeMethods.DwmExtendFrameIntoClientArea(hwnd, ref margins);
 

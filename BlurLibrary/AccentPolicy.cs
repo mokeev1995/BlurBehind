@@ -3,7 +3,7 @@
 namespace BlurLibrary
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public struct AccentPolicy
+	internal struct AccentPolicy
 	{
 		public AccentState AccentState;
 		public int AccentFlags;

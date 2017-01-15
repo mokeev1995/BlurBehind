@@ -9,7 +9,7 @@ using System.Security;
 namespace BlurLibrary
 {
 	[SuppressUnmanagedCodeSecurity]
-	public static class NativeMethods
+	internal static class NativeMethods
 	{
 		public const int WM_DWMCOMPOSITIONCHANGED = 0x031E;
 
