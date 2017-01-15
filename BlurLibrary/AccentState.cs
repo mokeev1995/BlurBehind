@@ -1,7 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 namespace BlurLibrary
 {
-	public enum AccentState
+	internal enum AccentState
 	{
 		ACCENT_DISABLED = 0,
 		ACCENT_ENABLE_GRADIENT = 1,
