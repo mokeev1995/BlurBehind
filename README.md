@@ -37,7 +37,7 @@ or just handle this exception to avoid crashing your app.
 
 ## :green_book: License
 
-[Licensed under the GPLv3 license.](https://github.com/mokeev1995/sample-win-aeroglass/blob/master/LICENSE)
+[Licensed under the GPLv3 license.](https://github.com/mokeev1995/BlurBehind/blob/master/LICENSE)
 
 Copyright (c) 2017 Mokeev Andrey
 
