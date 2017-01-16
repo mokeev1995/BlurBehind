@@ -16,7 +16,7 @@ namespace BlurLibrary
 
 		public static bool CanBeEnabled => BlurController.CanBeEnabled;
 
-		public static void EnableWindowBlur(IntPtr hwnd)
+		private static void EnableWindowBlur(IntPtr hwnd)
 		{
 			if (!CanBeEnabled)
 				return;
@@ -29,7 +29,7 @@ namespace BlurLibrary
 			EnableWindowBlur(Helpers.GetWindowHandle(window));
 		}
 
-		public static void DisableWindowBlur(IntPtr hwnd)
+		private static void DisableWindowBlur(IntPtr hwnd)
 		{
 			if (!CanBeEnabled)
 				return;
