@@ -1,8 +1,8 @@
-# BlurBehind Library For WPF Apps
+# :white_large_square: BlurBehind Library For WPF Apps
 
 BlurBehind - it's a simple library for WPF(not UWP) apps that needs to use blur behind the app window.
 
-## Usage
+## :clipboard: Usage
 
 If you want to enable BlurBehind you should use something like:
 ```csharp
@@ -19,7 +19,7 @@ BlurWindow.DisableWindowBlur(window);
 
 `window` means the same thing.
 
-## Windows Support
+## :green_book: Windows Support
 
 As the title said, it can be used only in 
 - Windows Vista
@@ -39,7 +39,7 @@ or just handle this exception to avoid crashing your app.
 
 [Licensed under the GPLv3 license.](https://github.com/mokeev1995/BlurBehind/blob/master/LICENSE)
 
-Copyright (c) 2017 Mokeev Andrey
+Copyright :copyright: 2017 Mokeev Andrey
 
 ---
 
