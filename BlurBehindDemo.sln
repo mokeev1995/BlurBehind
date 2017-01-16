@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlurBehindDemo", "sample\BlurBehindDemo.csproj", "{CCB7A1CD-FA61-4B81-8234-4E532B1A6DB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlurBehindDemo", "src\Demo\BlurBehindDemo.csproj", "{CCB7A1CD-FA61-4B81-8234-4E532B1A6DB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlurLibrary", "BlurLibrary\BlurLibrary.csproj", "{74FC0C63-7118-465B-8154-AD4A69C46E71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlurLibrary", "src\BlurLibrary\BlurLibrary.csproj", "{74FC0C63-7118-465B-8154-AD4A69C46E71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
