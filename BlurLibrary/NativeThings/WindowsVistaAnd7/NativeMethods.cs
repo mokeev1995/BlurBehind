@@ -1,28 +1,18 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Security;
+
 // ReSharper disable FieldCanBeMadeReadOnly.Global
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable InconsistentNaming
 // ReSharper disable UnusedMember.Global
+// ReSharper disable once CheckNamespace
 
-namespace BlurLibrary
+namespace BlurLibrary.NativeThings
 {
-	[SuppressUnmanagedCodeSecurity]
-	internal static class NativeMethods
+	internal static partial class NativeMethods
 	{
 		public const int WM_DWMCOMPOSITIONCHANGED = 0x031E;
 
-		/*
-		 * For Win 10
-		 */
-		[DllImport("user32.dll")]
-		public static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
-
-
-		/*
-		 * For Win 7
-		 */
 		[StructLayout(LayoutKind.Sequential)]
 		public struct DWM_BLURBEHIND
 		{

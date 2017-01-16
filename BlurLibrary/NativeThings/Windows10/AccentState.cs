@@ -1,5 +1,5 @@
 ﻿// ReSharper disable InconsistentNaming
-namespace BlurLibrary
+namespace BlurLibrary.NativeThings.Windows10
 {
 	internal enum AccentState
 	{

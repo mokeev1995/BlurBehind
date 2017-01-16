@@ -1,4 +1,4 @@
-namespace BlurLibrary
+namespace BlurLibrary.NativeThings.Windows10
 {
 	internal enum WindowCompositionAttribute
 	{

@@ -12,8 +12,12 @@
     <Grid>
 		<Grid Background="SlateGray" Width="500" Height="500">
 			<TextBlock x:Name="Block" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Foreground="White">
-			Hello Blur!
+				Hello Blur!
 			</TextBlock>
+			<Grid Margin="0,450,0,0">
+				<Button Width="245" HorizontalAlignment="Left" x:Name="EnableBtn" Click="EnableBtn_OnClick">Enable</Button>
+				<Button Width="245" HorizontalAlignment="Right" x:Name="DisableBtn" Click="DisableBtn_OnClick">Disable</Button>
+			</Grid>
 		</Grid>
 	</Grid>
 </Window>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace BlurLibrary
+namespace BlurLibrary.NativeThings.Windows10
 {
 	[StructLayout(LayoutKind.Sequential)]
 	internal struct WindowCompositionAttributeData

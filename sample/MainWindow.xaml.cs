@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Windows;
 using BlurLibrary;
-using Microsoft.Win32;
 
 namespace BlurBehindDemo
 {
-	public partial class MainWindow : Window
+	public partial class MainWindow
 	{
-
 		public MainWindow()
 		{
 			InitializeComponent();
-			MouseLeftButtonDown += delegate {
+			MouseLeftButtonDown += delegate
+			{
 				try
 				{
 					DragMove();
@@ -21,7 +20,8 @@ namespace BlurBehindDemo
 					// ignored
 				}
 			};
-			Block.MouseLeftButtonDown += delegate {
+			Block.MouseLeftButtonDown += delegate
+			{
 				try
 				{
 					DragMove();
@@ -35,11 +35,32 @@ namespace BlurBehindDemo
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			BlurWindow.SetBlurWindow(this);
+			if (BlurWindow.CanBeEnabled)
+			{
+				EnableBtn.IsEnabled = true;
+				DisableBtn.IsEnabled = false;
+
+				//BlurWindow.EnableWindowBlur(this);
+			}
+			else
+			{
+				EnableBtn.IsEnabled = false;
+				DisableBtn.IsEnabled = false;
+			}
+		}
+
+		private void EnableBtn_OnClick(object sender, RoutedEventArgs e)
+		{
+			EnableBtn.IsEnabled = false;
+			DisableBtn.IsEnabled = true;
+			BlurWindow.EnableWindowBlur(this);
+		}
+
+		private void DisableBtn_OnClick(object sender, RoutedEventArgs e)
+		{
+			EnableBtn.IsEnabled = true;
+			DisableBtn.IsEnabled = false;
+			BlurWindow.DisableWindowBlur(this);
 		}
 	}
-
-
-
-
 }
