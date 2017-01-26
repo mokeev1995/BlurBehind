@@ -12,8 +12,14 @@ namespace mokeev1995.BlurLibrary
 			BlurController = Helpers.GetWindowControllerForOs(OsHelper.GetOsType());
 		}
 
+		/// <summary>
+		///     Current blur state
+		/// </summary>
 		public static bool Enabled => BlurController.Enabled;
 
+		/// <summary>
+		///     Checks if blur can be enabled.
+		/// </summary>
 		public static bool CanBeEnabled => BlurController.CanBeEnabled;
 
 		private static void EnableWindowBlur(IntPtr hwnd)
@@ -24,6 +30,10 @@ namespace mokeev1995.BlurLibrary
 			BlurController.EnableBlur(hwnd);
 		}
 
+		/// <summary>
+		///     Enable blur for window
+		/// </summary>
+		/// <param name="window">Window object</param>
 		public static void EnableWindowBlur(Window window)
 		{
 			EnableWindowBlur(Helpers.GetWindowHandle(window));
@@ -37,6 +47,10 @@ namespace mokeev1995.BlurLibrary
 			BlurController.DisableBlur(hwnd);
 		}
 
+		/// <summary>
+		///     Disable blur for window
+		/// </summary>
+		/// <param name="window">Window object</param>
 		public static void DisableWindowBlur(Window window)
 		{
 			DisableWindowBlur(Helpers.GetWindowHandle(window));
